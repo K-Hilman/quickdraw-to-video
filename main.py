@@ -22,7 +22,11 @@ def qd_gif(category, country='MY', current_dir=current_dir, qty=None, seed=None)
     # Limit the number of drawings if qty is specified
     if qty is not None:
         if seed is not None:
-            random.seed(seed)
+            try:
+                random.seed(int(seed))  # Ensure seed is an integer
+            except (ValueError, TypeError):
+                raise ValueError(f"Invalid seed value: {seed}. Seed must be a number or None.")
+            
             if qty < len(category_my):
                 category_my = random.sample(category_my, qty)
             else:
@@ -30,7 +34,7 @@ def qd_gif(category, country='MY', current_dir=current_dir, qty=None, seed=None)
         else:
             # No seed: just take the first {qty}
             category_my = category_my[:qty]
-    
+
     # Create directory if it doesn't exist
     save_dir = os.path.join(current_dir, "quick draw", category)
     os.makedirs(save_dir, exist_ok=True)
@@ -70,7 +74,7 @@ def qd_vid(category, country='MY',ratio='sq',seed=None):
     else:
         raise ValueError("Invalid ratio. Use 'sq', 'st', or 'ls'.")
 
-    gif_list = qd_gif(category,country,current_dir,qty)
+    gif_list = qd_gif(category,country,current_dir,qty,seed)
     gifs = [Image.open(gif) for gif in gif_list]
 
     # Iniaite grid, assuming all gifs have the same size
