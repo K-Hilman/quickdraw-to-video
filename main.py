@@ -115,4 +115,4 @@ def qd_vid(category, country='MY',ratio='sq',seed=None):
     clip.write_videofile(video_path, codec='libx264')
     print(f'Gif converted to video at: {video_path}')
 
-qd_vid('star','MY','st')
+qd_vid('star','MY','sq')
