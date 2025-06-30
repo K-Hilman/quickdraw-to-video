@@ -9,6 +9,11 @@
 - Option to use randomization with a seed for reproducibility
 - Automatically exports both GIF and high-quality MP4 video
 - All output organized in a dedicated `quick draw/` folder
+- 
+## Google Colab
+
+You can try **quickdraw-to-video** directly in your browser using Google Colab:  
+[Open Colab Notebook](https://colab.research.google.com/drive/1t_jmcrHy474gMTkhMWqhN-O9FjoL1sQE?usp=sharing)
 
 ## Installation
 
